@@ -1,23 +1,32 @@
 import React from 'react';
 
-const Button = ({ 
-  children, 
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'small' | 'medium' | 'large';
+  children: React.ReactNode;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+  className?: string;
+}
+
+const Button = ({
   variant = 'primary', 
   size = 'medium', 
   onClick, 
   disabled = false,
   className = '',
+  children,
   ...props 
-}) => {
+}: ButtonProps) => {
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
   
-  const variants = {
+  const variants: Record<string, string> = {
     primary: 'bg-[#3B82F6] text-white hover:bg-[#2563EB] focus:ring-[#3B82F6]',
     secondary: 'bg-[#F1F5F9] text-[#1E293B] hover:bg-[#F8FAFC] focus:ring-[#3B82F6]',
     outline: 'border border-[#E5E7EB] text-[#1E293B] hover:bg-[#F8FAFC] focus:ring-[#3B82F6]'
   };
   
-  const sizes = {
+  const sizes: Record<string, string> = {
     small: 'px-4 py-2 text-sm',
     medium: 'px-6 py-3 text-base',
     large: 'px-8 py-4 text-lg'

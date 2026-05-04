@@ -4,7 +4,7 @@ import LazyImage from '../components/LazyImage';
 import Button from '../components/Button';
 
 // import image correctly
-import profileImg from '../assets/profile.png';
+import profileImg from "../assets/Untitled design.png";
 
 const Home: React.FC = () => {
   return (

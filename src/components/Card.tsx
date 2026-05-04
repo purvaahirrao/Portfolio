@@ -1,22 +1,30 @@
 import React from 'react';
 
-const Card = ({ 
-  children, 
-  className = '', 
-  hover = true, 
+interface CardProps {
+  children: React.ReactNode;
+  padding?: 'small' | 'medium' | 'large';
+  hover?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+const Card = ({
+  children,
   padding = 'medium',
-  ...props 
-}) => {
-  const baseClasses = 'rounded-lg transition-all duration-300';
+  hover = true,
+  className = '',
+  ...props
+}: CardProps) => {
+  const baseClasses = 'bg-white rounded-lg shadow-sm';
   
-  const paddingClasses = {
+  const paddingClasses: Record<string, string> = {
     small: 'p-4',
     medium: 'p-6',
     large: 'p-8'
   };
-  
-  const hoverClasses = hover ? 'hover:shadow-lg hover:-translate-y-1' : '';
-  
+
+  const hoverClasses = hover ? 'hover:shadow-md transition-shadow duration-200' : '';
+
   return (
     <div
       className={`${baseClasses} ${paddingClasses[padding]} ${hoverClasses} ${className}`}
